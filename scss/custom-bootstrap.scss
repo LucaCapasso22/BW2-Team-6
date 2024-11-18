@@ -1,0 +1,22 @@
+@import "./functions";
+@import"./variables";
+
+ $sfondo: #1A1A1A;
+ $playSong: #181818;
+ $button:#1ED760;
+ $playlist:#2a2a2a;
+ 
+
+ $nuovi-colori:(
+
+    "primary":$sfondo,
+    "warning":$playSong,
+    "success" :$button,
+    "danger":$playlist
+
+
+ );
+
+ $theme-colors :map-merge($theme-colors , $nuovi-colori);
+
+ @import "./bootstrap.scss" 
