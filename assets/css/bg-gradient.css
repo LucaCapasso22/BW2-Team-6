@@ -6,3 +6,11 @@
     rgba(18, 18, 18, 1) 58%
   );
 } */
+main {
+    background-color: #202020;
+}
+
+#span {
+    font-size: smaller;
+}
+
