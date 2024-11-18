@@ -30,7 +30,7 @@
           <div class="row justify-content-between">
             <!-- song info -->
             <div
-              class="col col-lg-3 d-flex align-items-center justify-content-center px-0"
+              class="col col-lg-3 d-flex align-items-center justify-content-start px-0"
             >
               <div>
                 <img src="https://placecats.com/50/50" alt="placeholder" />
@@ -45,16 +45,45 @@
             </div>
             <!-- progress bar -->
             <div
-              class="col col-lg-6 d-flex align-items-center justify-content-evenly"
+              class="col col-lg-6 d-flex align-items-center justify-content-center flex-column"
             >
-              <div>
-                <img src="https://placecats.com/50/50" alt="placeholder" />
+              <!-- player buttons -->
+              <div
+                class="d-flex w-50 justify-content-around align-items-center"
+              >
+                <a class="text-light text-decoration-none" href="#"
+                  ><i class="fas fa-random"></i
+                ></a>
+                <a class="text-light text-decoration-none" href="#"
+                  ><i class="fas fa-step-backward"></i
+                ></a>
+                <a class="text-light text-decoration-none" href="#"
+                  ><i class="fas fa-play-circle fs-2"></i
+                ></a>
+                <a class="text-light text-decoration-none" href="#"
+                  ><i class="fas fa-step-forward"></i
+                ></a>
+                <a class="text-light text-decoration-none" href="#"
+                  ><i class="fas fa-retweet"></i
+                ></a>
               </div>
-              <div>
-                <p class="mb-0">Fat Funny Friend</p>
-                <p class="mb-0">Maddie Zahm</p>
+              <div
+                class="d-flex justify-content-between w-100 align-items-center"
+              >
+                <div>time</div>
+                <div
+                  id="progressBar"
+                  class="progress-bar w-100 h-25 mx-1 bg-testo rounded-1"
+                  role="progressbar"
+                  style="width: 0%"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+                <div>time</div>
               </div>
-              <div><i class="far fa-heart"></i></div>
+
+              <!-- player progress -->
             </div>
             <!-- audio settings -->
             <div
