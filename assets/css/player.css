@@ -1,3 +1,7 @@
 .player-song-artist {
   font-size: 0.8rem;
 }
+
+#volumeBar {
+  height: 10%;
+}
