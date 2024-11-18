@@ -1,10 +1,11 @@
 @import "./functions";
 @import"./variables";
 
- $sfondo: #1A1A1A;
+ $sfondo: #171717;
  $playSong: #181818;
  $button:#1ED760;
  $playlist:#2a2a2a;
+ $testo:#8B8B8B;
  
 
  $nuovi-colori:(
@@ -12,7 +13,8 @@
     "primary":$sfondo,
     "warning":$playSong,
     "success" :$button,
-    "danger":$playlist
+    "danger":$playlist,
+    "testo":$testo
 
 
  );
