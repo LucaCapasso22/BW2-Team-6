@@ -1,0 +1,16 @@
+#hero-section-artist {
+  height: 40%;
+}
+
+#verified-artist {
+  font-size: 0.8rem;
+}
+
+#artist-popular-info {
+  height: 60%;
+}
+
+#artist-following-btn {
+  font-size: 0.7rem;
+  font-weight: 900;
+}
