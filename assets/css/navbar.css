@@ -23,7 +23,7 @@
 }
 
 .boxed {
-  height: 68.4vh;
+  height: 66vh;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -55,16 +55,10 @@
   background: rgba(255, 0, 0, 0.8);
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
-<<<<<<< Updated upstream
-=======
 
 nav p {
   font-weight: 600;
 }
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
-p {
+p{
   font-size: 0.7rem;
 }
->>>>>>> Stashed changes
