@@ -14,3 +14,6 @@ const recuperoDati =function(){
 }
 
 recuperoDati()
+
+const addressBarContent=new URLSearchParams(window.location.search)
+addressBarContent.get("albumId")
