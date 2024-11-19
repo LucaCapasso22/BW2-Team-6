@@ -25,15 +25,18 @@ fetch( "https://striveschool-api.herokuapp.com/api/deezer/album/6378419")
     }else{ throw new Error("errore nella risposta")}
 })
 .then((album)=>{
+    const row=document.getElementById("rowParent")
 album.tracks.data.forEach((song)=>{
     console.log(song)
-    const row=document.getElementById("rowParent")
-   row.innerHTML=`<div class="row">
+    const songRow = document.createElement("div");
+      songRow.classList.add("row")
+   songRow.innerHTML=`
             
             <div class="col col-6">${song.title}<br> <span class="small" > ${song.artist.name}</span></div>
             <div class="col col-3 d-flex justify-content-around align-items-center">694.578</div>
             <div class="col col-3 d-flex justify-content-around align-items-center">1:28</div>
-          </div>`
+          `
+          row.appendChild(songRow)
 })
 })
 .catch((error)=>{
