@@ -23,7 +23,7 @@
 }
 
 .boxed {
-  height: 66vh;
+  height: 68.4vh;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -60,5 +60,11 @@
 
 nav p {
   font-weight: 600;
+}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+p {
+  font-size: 0.7rem;
 }
 >>>>>>> Stashed changes
