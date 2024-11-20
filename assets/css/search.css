@@ -1,0 +1,8 @@
+#search-list-container {
+  height: 90%;
+  overflow-y: scroll;
+}
+
+#main-search {
+  height: 100vh;
+}
