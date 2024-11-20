@@ -3,13 +3,12 @@ const searchInput = document.getElementById('search-input')
 console.log('Valore input iniziale', searchInput.value)
 
 const searchForm = document.getElementById('search-form')
+const searchRow = document.getElementById('search-result-row')
 
 searchForm.addEventListener('submit', function (e) {
   e.preventDefault()
   console.log('Valore input finale', searchInput.value)
-  const searchRow = document.getElementById('search-result-row')
 
-  searchRow.innerHTML = ``
   const query = searchInput.value
   const searchURL = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`
 
@@ -25,20 +24,29 @@ searchForm.addEventListener('submit', function (e) {
       console.log(singers)
 
       singers.data.forEach((singer) => {
-        const newCol = document.createElement('div')
-        newCol.classList.add('col', 'col-lg-12')
-        newCol.innerHTML = `
-          <div class="d-flex align-items-center h-70 bg-testo  rounded">
-              <img src="${singer.artist.picture_small}" class="w-25 me-2 rounded-start" alt=""/>
-              <div>
-                  <p class="text-light fw-semibold mb-0">${singer.artist.name}</p>
-              </div>
-          </div>
-          `
-        searchRow.appendChild(newCol)
+        fillSearchResult(singer)
       })
     })
     .catch((error) => {
       console.log('Error: ', error)
     })
+  searchRow.innerHTML = ``
 })
+
+const fillSearchResult = function (cantante) {
+  const searchRow = document.getElementById('search-result-row')
+  const newCol = document.createElement('div')
+  newCol.classList.add('col', 'col-lg-3')
+  newCol.innerHTML = `
+    
+      <div class="card h-100 bg-black p-1" >
+        <img src="${cantante.artist.picture_medium}" class="card-img-top" alt="doggo"/>
+        <div class="card-body text-light bg-primary">
+          <a href="#" class="text-decoration-none text-light"><h5 class="card-title">${cantante.artist.name}</h5></a>
+          <a href="#" class="text-decoration-none text-light"><p class="card-text">${cantante.title}</p></a>
+        </div>
+      </div>
+    
+  `
+  searchRow.appendChild(newCol)
+}
