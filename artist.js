@@ -30,9 +30,13 @@ fetch(artistURL + '/top?limit=50')
 
     const songContainer = document.getElementById('artist-section-song-list')
 
-    songs.data.forEach((song) => {
+    songs.data.forEach((song, index) => {
       const newCol = document.createElement('div')
       newCol.classList.add('col', 'col-lg-12')
+
+      if (index > 4) {
+        newCol.classList.add('d-none')
+      }
 
       newCol.innerHTML = `
         <div class="row p-3">
@@ -82,3 +86,22 @@ const fillHeroName = function (singer) {
     `background-image: url('${singer.picture_xl}'); background-size: cover; background-position: top;`
   )
 }
+
+const expandBtn = document.getElementById('expands-song-list')
+expandBtn.addEventListener('click', function () {
+  const songCol = document.querySelectorAll('#artist-section-song-list > div')
+  const arrayOfCols = Array.from(songCol)
+  arrayOfCols.forEach((col, index) => {
+    if (col.classList.contains('d-none')) {
+      col.classList.remove('d-none')
+      expandBtn.innerText = 'VISUALIZZA MENO'
+    } else {
+      if (index > 4) {
+        if (!col.classList.contains('d-none')) {
+          col.classList.add('d-none')
+          expandBtn.innerText = 'VISUALIZZA ALTRO'
+        }
+      }
+    }
+  })
+})
