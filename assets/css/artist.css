@@ -1,5 +1,5 @@
 #hero-section-artist {
-  height: 40%;
+  height: 40vh;
 }
 
 #verified-artist {
@@ -7,10 +7,12 @@
 }
 
 #artist-popular-info {
-  height: 60%;
+  height: 60vh;
+  overflow-y: scroll;
 }
 
-#artist-following-btn {
+#artist-following-btn,
+#expands-song-list {
   font-size: 0.7rem;
   font-weight: 900;
 }

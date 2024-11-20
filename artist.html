@@ -51,7 +51,11 @@
                           <div>
                             <i class="fas fa-home text-testo"></i>
                           </div>
-                          <div class="mx-3 text-testo"><p>Home</p></div>
+                          <a
+                            href="./index.html"
+                            class="mx-3 text-testo text-decoration-none"
+                            ><p>Home</p></a
+                          >
                         </div>
                       </a>
                     </div>
@@ -59,7 +63,11 @@
                       <a class="text-decoration-none" href="./search.html">
                         <div class="col d-flex align-self-center mx-1">
                           <div><i class="fas fa-search text-testo"></i></div>
-                          <div class="mx-3 text-testo"><p>Cerca</p></div>
+                          <a
+                            href="./search.html"
+                            class="mx-3 text-testo text-decoration-none"
+                            ><p>Cerca</p></a
+                          >
                         </div>
                         <div class="row d-flex">
                           <div class="col d-flex align-self-center mx-1">
@@ -175,16 +183,11 @@
 
         <div class="col col-md-7 p-0">
           <!--Parte centrale-->
-          <main class="h-100">
+          <main>
             <!-- hero section -->
             <div
               id="hero-section-artist"
               class="container d-flex flex-column justify-content-between"
-              style="
-                background-image: url('data:image/jpeg;base64,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');
-                background-size: cover;
-                background-position: center;
-              "
             >
               <div
                 class="d-flex align-items-center justify-content-between my-2"
@@ -243,8 +246,8 @@
                     class="d-inline-block me-1"
                   />Artista verificato
                 </p>
-                <p class="display-1 fw-bolder">Artist Name</p>
-                <p>3.000.000 ascoltatori mensili</p>
+                <p id="hero-artist-name"></p>
+                <p><span id="fan-number"></span> ascoltatori mensili</p>
               </div>
             </div>
             <!-- tracks section -->
@@ -266,138 +269,8 @@
               <div class="row mt-3 text-light">
                 <div class="col col-lg-7">
                   <h5>Popolari</h5>
-                  <div class="row">
-                    <div class="col col-lg-12">
-                      <div class="row p-3">
-                        <div class="col col-lg-7">
-                          <span class="d-inline-block">1</span>
-                          <img
-                            src="./assets/imgs/main/image-1.jpg"
-                            alt="album_cover"
-                            width="40"
-                            class="d-inline-block mx-2"
-                          />
-                          <span class="d-inline-block">Song Title</span>
-                        </div>
-
-                        <div class="col col-lg-4 d-flex align-items-center">
-                          <span id="artist-page-download" class="text-testo"
-                            >276.616.912</span
-                          >
-                        </div>
-
-                        <div class="col col-lg-1 d-flex align-items-center">
-                          <span id="song-duration" class="text-testo"
-                            >3:18</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col col-lg-12">
-                      <div class="row p-3">
-                        <div class="col col-lg-7">
-                          <span class="d-inline-block">1</span>
-                          <img
-                            src="./assets/imgs/main/image-1.jpg"
-                            alt="album_cover"
-                            width="40"
-                            class="d-inline-block mx-2"
-                          />
-                          <span class="d-inline-block">Song Title</span>
-                        </div>
-
-                        <div class="col col-lg-4 d-flex align-items-center">
-                          <span id="artist-page-download" class="text-testo"
-                            >276.616.912</span
-                          >
-                        </div>
-
-                        <div class="col col-lg-1 d-flex align-items-center">
-                          <span id="song-duration" class="text-testo"
-                            >3:18</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col col-lg-12">
-                      <div class="row p-3">
-                        <div class="col col-lg-7">
-                          <span class="d-inline-block">1</span>
-                          <img
-                            src="./assets/imgs/main/image-1.jpg"
-                            alt="album_cover"
-                            width="40"
-                            class="d-inline-block mx-2"
-                          />
-                          <span class="d-inline-block">Song Title</span>
-                        </div>
-
-                        <div class="col col-lg-4 d-flex align-items-center">
-                          <span id="artist-page-download" class="text-testo"
-                            >276.616.912</span
-                          >
-                        </div>
-
-                        <div class="col col-lg-1 d-flex align-items-center">
-                          <span id="song-duration" class="text-testo"
-                            >3:18</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col col-lg-12">
-                      <div class="row p-3">
-                        <div class="col col-lg-7">
-                          <span class="d-inline-block">1</span>
-                          <img
-                            src="./assets/imgs/main/image-1.jpg"
-                            alt="album_cover"
-                            width="40"
-                            class="d-inline-block mx-2"
-                          />
-                          <span class="d-inline-block">Song Title</span>
-                        </div>
-
-                        <div class="col col-lg-4 d-flex align-items-center">
-                          <span id="artist-page-download" class="text-testo"
-                            >276.616.912</span
-                          >
-                        </div>
-
-                        <div class="col col-lg-1 d-flex align-items-center">
-                          <span id="song-duration" class="text-testo"
-                            >3:18</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col col-lg-12">
-                      <div class="row p-3">
-                        <div class="col col-lg-7">
-                          <span class="d-inline-block">1</span>
-                          <img
-                            src="./assets/imgs/main/image-1.jpg"
-                            alt="album_cover"
-                            width="40"
-                            class="d-inline-block mx-2"
-                          />
-                          <span class="d-inline-block">Song Title</span>
-                        </div>
-
-                        <div class="col col-lg-4 d-flex align-items-center">
-                          <span id="artist-page-download" class="text-testo"
-                            >276.616.912</span
-                          >
-                        </div>
-
-                        <div class="col col-lg-1 d-flex align-items-center">
-                          <span id="song-duration" class="text-testo"
-                            >3:18</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <!-- song list -->
+                  <div class="row" id="artist-section-song-list"></div>
                 </div>
                 <div class="col col-lg-5">
                   <h5>Brani che ti piacciono</h5>
@@ -435,6 +308,12 @@
                   </div>
                 </div>
               </div>
+              <button
+                class="btn btn-outline-light mx-3 border border-0"
+                id="expands-song-list"
+              >
+                VISUALIZZA ALTRO
+              </button>
             </div>
           </main>
         </div>
@@ -531,5 +410,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="./artist.js"></script>
   </body>
 </html>
