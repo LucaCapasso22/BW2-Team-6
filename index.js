@@ -17,6 +17,9 @@ const prova =function(){
 
 prova()
 
+const generateSong = function() {
+  
+}
 
 //PRIMO ALBUM
 const recuperoDati =function(){
