@@ -41,7 +41,7 @@ fetch(artistURL + '/top?limit=50')
       newCol.innerHTML = `
         <div class="row p-3">
             <div class="col col-lg-7 text-nowrap overflow-hidden">
-                <span>1</span>
+                <span>${index + 1}</span>
                 <img src="${
                   song.album.cover
                 }" alt="album_cover" width="40" class="mx-2"/>
@@ -85,6 +85,12 @@ const fillHeroName = function (singer) {
     `style`,
     `background-image: url('${singer.picture_xl}'); background-size: cover; background-position: top;`
   )
+
+  const roundedImg = document.getElementById('artist-img-rounded')
+  roundedImg.setAttribute(`src`, `${singer.picture_small}`)
+
+  const artistNameSpan = document.getElementById('artist-name-song-liked')
+  artistNameSpan.innerText = `${singer.name}`
 }
 
 const expandBtn = document.getElementById('expands-song-list')
