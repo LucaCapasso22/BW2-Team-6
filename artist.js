@@ -176,25 +176,9 @@ volumeBtn.addEventListener('click', function () {
   }
 })
 
-// player
-
-// fetch(artistURL + '/top?limit=50')
-//   .then((response) => {
-//     if (response.ok) {
-//       return response.json()
-//     } else {
-//       throw new Error('Errore nella richiesta!')
-//     }
-//   })
-//   .then((data) => {
-//     console.log(data)
-//     const playerCover = document.getElementById('player-cover')
-//     playerCover.setAttribute(`src`, `${data.data[0].album.cover_small}`)
-//     const playerTitle = document.getElementById('player-title')
-//     playerTitle.innerText = `${data.data[0].title}`
-//     const playerArtist = document.getElementById('player-artist')
-//     playerArtist.innerText = `${data.data[0].artist.name}`
-//   })
-//   .catch((error) => {
-//     console.log('error', error)
-//   })
+//Progress bar
+const progressBar = document.getElementById('progressBar')
+const updateProgressBar = function () {
+  const currentTime = document.getElementById('current-time')
+  currentTime.innerText
+}
