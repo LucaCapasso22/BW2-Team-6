@@ -1,19 +1,18 @@
-// const recuperoDati =function(){
-//     fetch(" https://striveschool-api.herokuapp.com/api/deezer/album/6378419")
-//     .then((response)=>{
-//         if(response.ok){
-//             return response.json()
-//         }else{throw new Error ("errore nella risppsta")}
-//     })
-//     .then((album)=>{
-//         console.log("questo è l'album",album)
-//     })
-//     .catch((error)=>{
-//         console.log("Orrore",error)
-//     })
-// }
-
-// recuperoDati()
+ //const recuperoDati =function(){
+ //    fetch(" https://striveschool-api.herokuapp.com/api/deezer/artist/171625")
+ //    .then((response)=>{
+ //        if(response.ok){
+ //            return response.json()
+ //        }else{throw new Error ("errore nella risppsta")}
+ //    })
+ //    .then((album)=>{
+ //        console.log("questo è l'artista",album)
+ //    })
+ //    .catch((error)=>{
+ //        console.log("Orrore",error)
+ //    })}
+ //
+ //recuperoDati()
 
 const apiUrl = "https://striveschool-api.herokuapp.com/api/deezer/album";
 const addressBarContent = new URLSearchParams(window.location.search);
@@ -115,7 +114,7 @@ fetch(apiUrl + "/" + albumId)
     appendAlbum.innerHTML = `
               <div class="col col-md-3 p-0 d-flex justify-content-end ">
                 <img src=" ${album.cover_xl}" id="img"
-      crossorigin="anonymous" onload="start()" class="img-fluid" alt="img album" />
+      crossorigin="anonymous" onload="start()" class="img-fluid shadow  bg-body-tertiary rounded" alt="img album" />
               </div>
               <div
                 class="col col-md-9 m-0 d-flex flex-column justify-content-end"
@@ -159,7 +158,7 @@ fetch(apiUrl + "/" + albumId)
             
             <div class="col col-6">${
               song.title
-            }<br> <a href="#" class="small text-decoration-none text-testo" > ${
+            }<br> <a href="./artist.html?artistId=${song.artist.id}" class="small text-decoration-none text-testo" > ${
         song.artist.name
       }</a></div>
             <div class="col col-3 d-flex justify-content-around align-items-center">${
