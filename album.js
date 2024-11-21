@@ -158,9 +158,9 @@ fetch(apiUrl + "/" + albumId)
       songRow.classList.add("row");
       songRow.innerHTML = `
             
-            <div class="col col-6 text-light">${
+            <div class="col col-6 text-light"><a> <i class="fas fa-heart me-2 "></i></a>${
               song.title
-            }<br> <a href="./artist.html?artistId=${song.artist.id}" class="small text-decoration-none text-testo" > ${
+            }<br> <a href="./artist.html?artistId=${song.artist.id}" class="small text-decoration-none text-testo ms-4" > ${
         song.artist.name
       }</a></div>
             <div class="col col-3 d-flex justify-content-around align-items-center text-testo">${
@@ -170,8 +170,21 @@ fetch(apiUrl + "/" + albumId)
               song.duration
             )}</div>
           `;
+          
       row.appendChild(songRow);
+      
     });
+    const cuore=document.querySelectorAll(".fa-heart:not(.fa-heart.like-icon)")
+    for (const icon of cuore)
+ {
+  console.log("Mannaggia",icon)
+  icon.addEventListener("click",()=>{
+    
+  icon.classList.toggle("text-success")
+    
+  })
+}
+
   })
   .catch((error) => {
     console.log("orrore", error);
