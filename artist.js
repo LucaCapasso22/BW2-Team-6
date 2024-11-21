@@ -177,8 +177,49 @@ volumeBtn.addEventListener('click', function () {
 })
 
 //Progress bar
-const progressBar = document.getElementById('progressBar')
-const updateProgressBar = function () {
-  const currentTime = document.getElementById('current-time')
-  currentTime.innerText
+const progress = document.getElementById('progress')
+
+// progerss Time
+const audio = document.getElementById('audio')
+const currentTimeSpan = document.getElementById('current-time')
+const durationSpan = document.getElementById('duration-time')
+
+const formatTime = function (seconds) {
+  const minutes = Math.floor(seconds / 60)
+  const secs = Math.floor(seconds % 60)
+  return `${minutes.toString().padStart(2, '0')}:${secs
+    .toString()
+    .padStart(2, '0')}`
 }
+
+audio.addEventListener('loadedmetadata', () => {
+  durationSpan.innerText = '00:' + Math.floor(audio.duration.toString())
+})
+
+audio.addEventListener('timeupdate', () => {
+  const currentTime = Math.floor(audio.currentTime)
+  currentTimeSpan.textContent = formatTime(currentTime)
+})
+
+// Volume control
+
+const volumeContainer = document.getElementById('volumeContainer')
+const volumeBar = document.getElementById('volumeBar')
+
+const updateVolume = function (volume) {
+  if (volume >= 0 && volume <= 100) {
+    volumeBar.style.width = `${volume}%`
+    console.log(`Volume aggiornato a: ${volume}%`)
+  }
+}
+
+volumeContainer.addEventListener('click', (event) => {
+  // Calcola la posizione del clic in percentuale
+  const rect = volumeContainer.getBoundingClientRect()
+  const clickX = event.clientX - rect.left // Distanza dal lato sinistro
+  const width = rect.width // Larghezza totale della barra
+  const volume = Math.round((clickX / width) * 100) // Calcola il volume in %
+
+  updateVolume(volume)
+  audio.volume = volume / 100
+})

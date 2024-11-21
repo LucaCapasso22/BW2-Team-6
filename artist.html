@@ -470,16 +470,23 @@
                 class="d-flex justify-content-between w-100 align-items-center"
               >
                 <div id="current-time">00.00</div>
+                <div id="progressBarContainer">
+                  <div
+                    id="progressBar"
+                    class="progress-bar w-100 h-25 mx-1 bg-testo rounded-1"
+                    role="progressbar"
+                    style="width: 0%"
+                  >
+                    <div></div>
+                  </div>
+                </div>
                 <div
                   id="progressBar"
                   class="progress-bar w-100 h-25 mx-1 bg-testo rounded-1"
                   role="progressbar"
                   style="width: 0%"
-                  aria-valuenow="0"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
                 ></div>
-                <div id="remaining-time">00.00</div>
+                <div id="duration-time">00.00</div>
               </div>
             </div>
             <!-- audio settings -->
