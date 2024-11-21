@@ -4,7 +4,7 @@ const artistId = addressBarContent.get('artistId')
 const artistURL = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}`
 fetch(artistURL)
   .then((response) => {
-    if (response) {
+    if (response.ok) {
       return response.json()
     } else {
       throw new Error('Errore nella richiesta!')
@@ -19,7 +19,7 @@ fetch(artistURL)
 
 fetch(artistURL + '/top?limit=50')
   .then((response) => {
-    if (response) {
+    if (response.ok) {
       return response.json()
     } else {
       throw new Error('Errore nella richiesta')
@@ -111,3 +111,20 @@ expandBtn.addEventListener('click', function () {
     }
   })
 })
+
+// player
+
+fetch(artistURL)
+  .then((response) => {
+    if (response.ok) {
+      return response.json()
+    } else {
+      throw new Error('Errore nella richiesta!')
+    }
+  })
+  .then((data) => {
+    console.log(data.data[0].id)
+  })
+  .catch((error) => {
+    console.log('error', error)
+  })
