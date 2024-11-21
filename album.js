@@ -95,7 +95,7 @@ const start = function () {
   // console.log del risultato
   console.log(mostRecurrentHex);
   const divElement = document.getElementById('sfondo');
-  divElement.style.backgroundColor = `${mostRecurrentHex}`;
+  divElement.style.backgroundColor = `#${mostRecurrentHex}`;
 };
 
 //SEZIONE  IMG GRANDE E TITOLO ALBUM
