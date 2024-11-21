@@ -23,7 +23,7 @@
 }
 
 .boxed {
-  height: 66vh;
+  height: 60vh;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -59,6 +59,6 @@
 nav p {
   font-weight: 600;
 }
-p{
+p {
   font-size: 0.8rem;
 }
