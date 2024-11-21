@@ -95,6 +95,8 @@ const start = function () {
   console.log(mostRecurrentHex);
   const divElement = document.getElementById('sfondo');
   divElement.style.backgroundColor = `#${mostRecurrentHex}`;
+  const sfondoLg=document.getElementById("sfondoLg")
+  sfondoLg.style.background=`linear-gradient(#${mostRecurrentHex} 5%, #000000 15%, #000000 100%)`
 };
 
 //SEZIONE  IMG GRANDE E TITOLO ALBUM
@@ -120,7 +122,7 @@ fetch(apiUrl + "/" + albumId)
                 class="col col-md-9 m-0 d-flex flex-column justify-content-end"
               >
                 <p class="small m-0">ALBUM</p>
-                <h1>${album.title}</h1>
+                <h1 style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3)">${album.title}</h1>
                 <p class="small">
                   <img
                     src="${album.cover_small}"
@@ -156,15 +158,15 @@ fetch(apiUrl + "/" + albumId)
       songRow.classList.add("row");
       songRow.innerHTML = `
             
-            <div class="col col-6">${
+            <div class="col col-6 text-light">${
               song.title
             }<br> <a href="./artist.html?artistId=${song.artist.id}" class="small text-decoration-none text-testo" > ${
         song.artist.name
       }</a></div>
-            <div class="col col-3 d-flex justify-content-around align-items-center">${
+            <div class="col col-3 d-flex justify-content-around align-items-center text-testo">${
               song.rank
             }</div>
-            <div class="col col-3 d-flex justify-content-around align-items-center">${formatDuration(
+            <div class="col col-3 d-flex justify-content-around align-items-center text-testo">${formatDuration(
               song.duration
             )}</div>
           `;
