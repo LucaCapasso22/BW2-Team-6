@@ -1,21 +1,21 @@
-const prova = function () {
-  fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=queen')
-    .then((response) => {
-      if (response.ok) {
-        return response.json()
-      } else {
-        throw new Error('errore nella risposta')
-      }
-    })
-    .then((album) => {
-      console.log('prova', album)
-    })
-    .catch((error) => {
-      console.log('Orrore', error)
-    })
-}
-
-prova()
+//const prova = function () {
+//  fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=queen')
+//    .then((response) => {
+//      if (response.ok) {
+//        return response.json()
+//      } else {
+//        throw new Error('errore nella risposta')
+//      }
+//    })
+//    .then((album) => {
+//      console.log('prova', album)
+//    })
+//    .catch((error) => {
+//      console.log('Orrore', error)
+//    })
+//}
+//
+//prova()
 
 const generateSong = function () {}
 
@@ -30,7 +30,7 @@ const recuperoDati = function () {
       }
     })
     .then((album) => {
-      console.log("questo è l'album", album)
+      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
@@ -68,7 +68,7 @@ const recuperoDati2 = function () {
       }
     })
     .then((album) => {
-      console.log("questo è l'album", album)
+      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
@@ -106,7 +106,7 @@ const recuperoDati3 = function () {
       }
     })
     .then((album) => {
-      console.log("questo è l'album", album)
+      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
@@ -144,7 +144,7 @@ const recuperoDati4 = function () {
       }
     })
     .then((album) => {
-      console.log("questo è l'album", album)
+      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
@@ -182,7 +182,7 @@ const recuperoDati5 = function () {
       }
     })
     .then((album) => {
-      console.log("questo è l'album", album)
+      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
@@ -220,7 +220,7 @@ const recuperoDati6 = function () {
       }
     })
     .then((album) => {
-      console.log("questo è l'album", album)
+      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
@@ -248,7 +248,7 @@ const recuperoDati6 = function () {
 recuperoDati6()
 
 // CAROSSELLO IN HOMEPAGE
-const apiUrl = 'https://striveschool-api.herokuapp.com/api/deezer/album/5191431'
+const apiUrl = 'https://striveschool-api.herokuapp.com/api/deezer/album/936850'
 // const addressBarContent = new URLSearchParams(window.location.search)
 // let albumId = addressBarContent.get('albumId')
 const carouselFunction = function () {
@@ -263,25 +263,26 @@ const carouselFunction = function () {
     .then((album) => {
       console.log('Trovato album', album)
       const carouselInner = document.getElementById('carouselInner')
-      for (let i = 0; i < album.tracks.length; i++) {
+      for (let i = 0; i < album.tracks.data.length; i++) {
         const row = document.createElement('div')
-        row.classList.add('row', 'd-flex', 'carousel-item', 'd-block', 'w-100')
+        row.classList.add('row','carousel-item', 'w-100', )
         if (i === 0) {
           row.classList.add('active')
         }
         row.innerHTML = `
+        <div class="d-flex">
        <img
-          class="w-25 p-lg-3"
-          src= ${album.cover[i]}
-          alt=""
+          class="w-25 p-lg-3 object-fit-cover"
+          src= ${album.cover}
+          alt="albumCover"
         />
         <div class="col text-white mb-3">
           <h6 class="mt-2">ALBUM</h6>
           <div class="mt-5">
-            <h1 class="fs-1">VIOLA (feat. Salmo)</h1>
-            <p class="fs-6">Fedez, Salmo</p>
+            <h1 class="fs-1">${album.tracks.data[i].title}</h1>
+            <p class="fs-6">${album.tracks.data[i].artist.name}</p>
             <p class="fs-6">
-              Ascolta il nuovo brano di Fedez e Salmo
+              Ascolta il nuovo album di ${album.artist.name}
             </p>
           </div>
           <span class="">
@@ -295,7 +296,7 @@ const carouselFunction = function () {
             </button>
             <i class="fas fa-ellipsis-h text-white-50"></i>
           </span>
-        </div>`
+        </div></div>`
         carouselInner.appendChild(row)
       }
       //   <div class="carousel-item active">
