@@ -1,18 +1,18 @@
- //const recuperoDati =function(){
- //    fetch(" https://striveschool-api.herokuapp.com/api/deezer/artist/171625")
- //    .then((response)=>{
- //        if(response.ok){
- //            return response.json()
- //        }else{throw new Error ("errore nella risppsta")}
- //    })
- //    .then((album)=>{
- //        console.log("questo è l'artista",album)
- //    })
- //    .catch((error)=>{
- //        console.log("Orrore",error)
- //    })}
- //
- //recuperoDati()
+//const recuperoDati =function(){
+//    fetch(" https://striveschool-api.herokuapp.com/api/deezer/artist/171625")
+//    .then((response)=>{
+//        if(response.ok){
+//            return response.json()
+//        }else{throw new Error ("errore nella risppsta")}
+//    })
+//    .then((album)=>{
+//        console.log("questo è l'artista",album)
+//    })
+//    .catch((error)=>{
+//        console.log("Orrore",error)
+//    })}
+//
+//recuperoDati()
 
 const apiUrl = "https://striveschool-api.herokuapp.com/api/deezer/album";
 const addressBarContent = new URLSearchParams(window.location.search);
@@ -93,10 +93,10 @@ const start = function () {
 
   // console.log del risultato
   console.log(mostRecurrentHex);
-  const divElement = document.getElementById('sfondo');
+  const divElement = document.getElementById("sfondo");
   divElement.style.backgroundColor = `#${mostRecurrentHex}`;
-  const sfondoLg=document.getElementById("sfondoLg")
-  sfondoLg.style.background=`linear-gradient(#${mostRecurrentHex} 5%, #000000 15%, #000000 100%)`
+  const sfondoLg = document.getElementById("sfondoLg");
+  sfondoLg.style.background = `linear-gradient(#${mostRecurrentHex} 5%, #000000 15%, #000000 100%)`;
 };
 
 //SEZIONE  IMG GRANDE E TITOLO ALBUM
@@ -122,7 +122,9 @@ fetch(apiUrl + "/" + albumId)
                 class="col col-md-9 m-0 d-flex flex-column justify-content-end"
               >
                 <p class="small m-0">ALBUM</p>
-                <h1 style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3)">${album.title}</h1>
+                <h1 style="text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3)">${
+                  album.title
+                }</h1>
                 <p class="small">
                   <img
                     src="${album.cover_small}"
@@ -155,12 +157,18 @@ fetch(apiUrl + "/" + albumId)
     album.tracks.data.forEach((song) => {
       console.log("questa è la song", song);
       const songRow = document.createElement("div");
+      
       songRow.classList.add("row");
       songRow.innerHTML = `
             
-            <div class="col col-6 text-light"><a> <i class="fas fa-heart me-2 "></i></a>${
-              song.title
-            }<br> <a href="./artist.html?artistId=${song.artist.id}" class="small text-decoration-none text-testo ms-4" > ${
+            <div class="col col-6 text-light"><a> <i class="fas fa-heart me-2
+            title-song-id="${song.title}"
+             name-artist-id="${song.artist.name}" 
+             artist-id="${song.artist.id}">
+             </i>
+        </a>${song.title}<br> <a href="./artist.html?artistId=${
+        song.artist.id
+      }" class="small text-decoration-none text-testo ms-4" > ${
         song.artist.name
       }</a></div>
             <div class="col col-3 d-flex justify-content-around align-items-center text-testo">${
@@ -171,20 +179,37 @@ fetch(apiUrl + "/" + albumId)
             )}</div>
           `;
           
-      row.appendChild(songRow);
-      
-    });
-    const cuore=document.querySelectorAll(".fa-heart:not(.fa-heart.like-icon)")
-    for (const icon of cuore)
- {
-  console.log("Mannaggia",icon)
-  icon.addEventListener("click",()=>{
-    
-  icon.classList.toggle("text-success")
-    
-  })
-}
 
+      row.appendChild(songRow);
+     
+    });
+    const cuore = document.querySelectorAll(
+      ".fa-heart:not(.fa-heart.like-icon)"
+    );
+    cuore.forEach((icon) => {
+     
+      icon.addEventListener("click", () => {
+        const title=icon.getAttribute("title-song-id")
+        
+       const name=icon.getAttribute("name-artist-id")
+        const artistId=icon.getAttribute("artist-id")
+        icon.classList.toggle("text-success");
+        let savedSong=localStorage.getItem("savedSong")
+        if(savedSong===null){
+          savedSong=[]
+        }else{savedSong=JSON.parse(savedSong)}
+        const song={
+          title:title,
+          artist:name,
+          artistId:artistId}
+          if(icon.classList.contains("text-success")){
+            if(!savedSong.some((songItem)=>songItem.title===song.title)){
+              savedSong.push(song)
+            }else{savedSong=savedSong.filter((songItem)=>songItem.title !==song.title)}
+            localStorage.setItem("savedSong",JSON.stringify(savedSong))
+          }
+      });
+    });
   })
   .catch((error) => {
     console.log("orrore", error);
@@ -202,4 +227,3 @@ const formatDuration1 = function (durationInSeconds) {
   const seconds = durationInSeconds % 60;
   return `${minutes} min. ${seconds.toString().padStart(2, "0")} sec. `;
 };
-
