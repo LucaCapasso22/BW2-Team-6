@@ -407,9 +407,9 @@
     </div>
 
     <footer>
-      <article id="palyer" class="position-fixed bottom-0 w-100">
+      <article id="player" class="position-fixed bottom-0 w-100 d-none">
         <div
-          class="container-fluid bg-warning p-1 text-light border border-2 border-testo border-bottom-0 border-end-0 border-start-0"
+          class="container-fluid bg-warning p-3 text-light border border-2 border-testo border-bottom-0 border-end-0 border-start-0"
         >
           <div class="row justify-content-between">
             <!-- song info -->
@@ -417,7 +417,11 @@
               class="col col-md-3 d-flex align-items-center justify-content-start px-0"
             >
               <div>
-                <img src="https://placecats.com/50/50" alt="placeholder" />
+                <img
+                  src="https://placecats.com/50/50"
+                  alt="placeholder"
+                  id="player-cover"
+                />
               </div>
               <div class="mx-4">
                 <p class="mb-0 player-song-title fw-medium" id="player-title">
@@ -448,7 +452,10 @@
                 <button class="text-light btn btn-outline-dark border-0">
                   <i class="fas fa-step-backward"></i>
                 </button>
-                <button class="text-light btn btn-outline-dark border-0">
+                <button
+                  class="text-light btn btn-outline-dark border-0"
+                  id="play-btn"
+                >
                   <i class="fas fa-play-circle fs-2"></i>
                 </button>
                 <button class="text-light btn btn-outline-dark border-0">
@@ -549,7 +556,10 @@
               </button>
 
               <!-- volume icon -->
-              <button class="mx-1 p-0 btn btn-outline-dark border-0">
+              <button
+                class="mx-1 p-0 btn btn-outline-dark border-0"
+                id="volume-btn"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
@@ -596,6 +606,7 @@
           </div>
         </div>
       </article>
+      <audio id="audio" src="" controls class="d-none"></audio>
     </footer>
 
     <script
