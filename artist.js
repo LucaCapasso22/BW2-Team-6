@@ -41,7 +41,7 @@ fetch(artistURL + '/top?limit=50')
       newCol.innerHTML = `
         <a class="row p-3 songRow text-decoration-none text-light" href="#">
             <div class="col col-lg-7 text-nowrap overflow-hidden">
-                <span>${index + 1}</span>
+                <span class="songPosition">${index + 1}</span>
                 <img src="${
                   song.album.cover
                 }" alt="album_cover" width="40" class="mx-2"/>
@@ -84,6 +84,70 @@ fetch(artistURL + '/top?limit=50')
         audio.play()
         playBtn.innerHTML = `<i class="fas fa-pause-circle fs-2"></i>`
       })
+    })
+
+    const heroSection = document.getElementById('hero-section-artist')
+    const playSuccess = document.getElementById('play-success')
+    playSuccess.addEventListener('click', () => {
+      heroSection.style.height = '30vh'
+
+      const player = document.getElementById('player')
+      player.classList.remove('d-none')
+      const playerCover = document.getElementById('player-cover')
+      playerCover.setAttribute(`src`, `${songs.data[0].album.cover_small}`)
+      const playerTitle = document.getElementById('player-title')
+      playerTitle.innerText = `${songs.data[0].title}`
+      const playerArtist = document.getElementById('player-artist')
+      playerArtist.innerText = `${songs.data[0].artist.name}`
+      const audio = document.getElementById('audio')
+      audio.setAttribute(`src`, `${songs.data[0].preview}`)
+      audio.setAttribute('autoplay', true)
+      playBtn.innerHTML = `<i class="fas fa-pause-circle fs-2"></i>`
+    })
+
+    const bwButton = document.getElementById('backward-btn')
+    const fwButton = document.getElementById('forward-btn')
+
+    fwButton.addEventListener('click', function () {
+      const audio = document.getElementById('audio')
+      if (!audio.paused) {
+        const preview = audio.getAttribute('src')
+        const ind = songs.data.findIndex((obj) => obj.preview === preview)
+        audio.setAttribute('src', `${songs.data[ind + 1].preview}`)
+        audio.setAttribute('autoplay', true)
+
+        const playerCover = document.getElementById('player-cover')
+        playerCover.setAttribute(
+          `src`,
+          `${songs.data[ind + 1].album.cover_small}`
+        )
+        const playerTitle = document.getElementById('player-title')
+        playerTitle.innerText = `${songs.data[ind + 1].title}`
+        const playerArtist = document.getElementById('player-artist')
+        playerArtist.innerText = `${songs.data[ind + 1].artist.name}`
+      }
+    })
+
+    bwButton.addEventListener('click', () => {
+      const audio = document.getElementById('audio')
+      if (!audio.paused) {
+        const preview = audio.getAttribute('src')
+        const ind = songs.data.findIndex((obj) => obj.preview === preview)
+        if (ind > 0) {
+          audio.setAttribute('src', `${songs.data[ind - 1].preview}`)
+          audio.setAttribute('autoplay', true)
+
+          const playerCover = document.getElementById('player-cover')
+          playerCover.setAttribute(
+            `src`,
+            `${songs.data[ind - 1].album.cover_small}`
+          )
+          const playerTitle = document.getElementById('player-title')
+          playerTitle.innerText = `${songs.data[ind - 1].title}`
+          const playerArtist = document.getElementById('player-artist')
+          playerArtist.innerText = `${songs.data[ind - 1].artist.name}`
+        }
+      }
     })
   })
   .catch((error) => {
@@ -214,11 +278,10 @@ const updateVolume = function (volume) {
 }
 
 volumeContainer.addEventListener('click', (event) => {
-  // Calcola la posizione del clic in percentuale
   const rect = volumeContainer.getBoundingClientRect()
-  const clickX = event.clientX - rect.left // Distanza dal lato sinistro
-  const width = rect.width // Larghezza totale della barra
-  const volume = Math.round((clickX / width) * 100) // Calcola il volume in %
+  const clickX = event.clientX - rect.left
+  const width = rect.width
+  const volume = Math.round((clickX / width) * 100)
 
   updateVolume(volume)
   audio.volume = volume / 100

@@ -37,13 +37,15 @@ const fillSearchResult = function (cantante) {
   const searchRow = document.getElementById('search-result-row')
   const newCol = document.createElement('div')
   newCol.classList.add('col', 'col-lg-3')
+
   newCol.innerHTML = `
     
       <div class="card h-100 bg-black p-1" >
         <img src="${cantante.artist.picture_medium}" class="card-img-top" alt="doggo"/>
         <div class="card-body text-light bg-primary">
           <a href="./artist.html?artistId=${cantante.artist.id}" class="text-decoration-none text-light"><h5 class="card-title">${cantante.artist.name}</h5></a>
-          <a href="#" class="text-decoration-none text-light"><p class="card-text">${cantante.title}</p></a>
+          <a href="./artist.html?artistId=${cantante.artist.id}" class="text-decoration-none text-light"><p class="card-text">${cantante.title}</p></a>
+          <a href="./album.html?albumId=${cantante.album.id}" class="text-decoration-none text-light"><p class="card-text">${cantante.album.title}</p></a>
         </div>
       </div>
     
