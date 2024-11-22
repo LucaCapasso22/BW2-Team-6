@@ -205,12 +205,13 @@ fetch(apiUrl + '/' + albumId)
           title:title,
           artist:name,
           artistId:artistId}
-          if(icon.classList.contains("text-success")){
+         
             if(!savedSong.some((songItem)=>songItem.title===song.title)){
               savedSong.push(song)
             }else{savedSong=savedSong.filter((songItem)=>songItem.title !==song.title)}
+            console.log("savedSong",savedSong)
             localStorage.setItem("savedSong",JSON.stringify(savedSong))
-          }
+          
       });
     });
   })
