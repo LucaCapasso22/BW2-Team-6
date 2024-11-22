@@ -12,3 +12,16 @@
   background-color: #007bff;
   border-radius: 5px;
 }
+
+.bgCards {
+  background-color: #8b8b8b;
+}
+@media screen and (max-width: 768px) {
+  .position {
+    transform: translateY(-80%);
+  }
+
+  .bgCards {
+    background-color: black;
+  }
+}

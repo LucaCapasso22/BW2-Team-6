@@ -1,0 +1,283 @@
+.myP {
+  font-size: 12px;
+}
+
+.pVertical {
+  font-size: 11px;
+}
+
+.bgMain {
+  background-color: #202020;
+}
+
+.myMain {
+  background-color: #202020;
+}
+
+#volumeContainer {
+  width: 30%;
+  height: 10%;
+  background-color: #8b8b8b;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#volumeBar {
+  width: 100%;
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 5px;
+}
+
+.bgCards {
+  background-color: #8b8b8b;
+}
+@media screen and (max-width: 768px) {
+  .position {
+    transform: translateY(-80%);
+  }
+
+  .bgCards {
+    background-color: black;
+  }
+}
+
+#hero-section-artist {
+  height: 40vh;
+}
+
+.h-30 {
+  height: 30vh;
+}
+
+#verified-artist {
+  font-size: 0.8rem;
+}
+
+#artist-popular-info {
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+#artist-following-btn,
+#expands-song-list {
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+#artist-page-download {
+  font-size: 0.8rem;
+}
+
+#song-duration {
+  font-size: 0.8rem;
+}
+
+#heart-container {
+  padding: 0.2rem;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+}
+
+.bi-heart-fill {
+  font-size: 0.5rem;
+}
+
+#num-song-i-liked .text-testo {
+  font-size: 0.7rem;
+}
+
+#volumeContainer {
+  width: 30%;
+  height: 10%;
+  background-color: #8b8b8b;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#volumeBar {
+  width: 100%;
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 5px;
+}
+/* main {
+  background: rgb(32, 32, 32);
+  background: linear-gradient(
+    191deg,
+    rgba(32, 32, 32, 1) 0%,
+    rgba(18, 18, 18, 1) 58%
+  );
+} */
+main {
+  background-color: #202020;
+}
+
+#span {
+  font-size: smaller;
+}
+
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Light.otf);
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-LightItalic.otf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Book.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-BookItalic.otf);
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Medium.otf);
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-MediumItalic.otf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-MediumItalic.otf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Bold.otf);
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-BoldItalic.otf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Black.otf);
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-BlackItalic.otf);
+  font-weight: 900;
+  font-style: italic;
+}
+.like-icon {
+  font-size: 10px;
+  padding: 4px 4px;
+  border-radius: 10%;
+  background: rgb(61, 32, 168);
+  background: linear-gradient(
+    140deg,
+    rgba(61, 32, 168, 1) 27%,
+    rgba(119, 142, 137, 1) 91%
+  );
+}
+.bookmark-icon {
+  color: #149643;
+  font-size: 10px;
+  padding: 4px 4px;
+  border-radius: 10%;
+  background: #004537;
+}
+.plus-icon {
+  font-size: 10px;
+  padding: 4px 4px;
+  border-radius: 10%;
+}
+
+.boxed {
+  height: 60vh;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #4d4d4d #050505;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #4d4d4d;
+  border-radius: 10px;
+  border: 3px none #000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(255, 0, 0, 0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+nav p {
+  font-weight: 600;
+}
+p {
+  font-size: 0.8rem;
+}
+
+.player-song-artist {
+  font-size: 0.8rem;
+}
+
+#volumeContainer {
+  width: 30%;
+  height: 10%;
+  background-color: #8b8b8b;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#volumeBar {
+  width: 0%;
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .position {
+    transform: translateY(-80%);
+  }
+}
+#search-list-container {
+  height: 90%;
+  overflow-y: scroll;
+}
+
+#main-search {
+  height: 100vh;
+}
