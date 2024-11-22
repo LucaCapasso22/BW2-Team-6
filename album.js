@@ -92,12 +92,12 @@ const start = function () {
   let mostRecurrentHex = pad(mostRecurrent)
 
   // console.log del risultato
-  console.log(mostRecurrentHex);
-  const divElement = document.getElementById("sfondo");
-  divElement.style.backgroundColor = `#${mostRecurrentHex}`;
-  const sfondoLg = document.getElementById("sfondoLg");
-  sfondoLg.style.background = `linear-gradient(#${mostRecurrentHex} 5%, #000000 15%, #000000 100%)`;
-};
+  console.log(mostRecurrentHex)
+  const divElement = document.getElementById('sfondo')
+  divElement.style.backgroundColor = `#${mostRecurrentHex}`
+  const sfondoLg = document.getElementById('sfondoLg')
+  sfondoLg.style.background = `linear-gradient(#${mostRecurrentHex} 5%, #000000 15%, #000000 100%)`
+}
 
 //SEZIONE  IMG GRANDE E TITOLO ALBUM
 
@@ -154,17 +154,20 @@ fetch(apiUrl + '/' + albumId)
   .then((album) => {
     const row = document.getElementById('rowParent')
     console.log('questo è album', album)
-    const favoriteSong=JSON.parse(localStorage.getItem("savedSong"))
-    
+    const favoriteSong = JSON.parse(localStorage.getItem('savedSong'))
 
     album.tracks.data.forEach((song) => {
-      console.log("questa è la song", song);
-      const songRow = document.createElement("div");
-      
-      songRow.classList.add("row");
+      console.log('questa è la song', song)
+      const songRow = document.createElement('div')
+
+      songRow.classList.add('row')
       songRow.innerHTML = `
             
-            <div class="col col-6 text-light"><a> <i class="fas fa-heart me-2 ${favoriteSong.some(s=>s.title===song.title)?"text-success":""} "
+            <div class="col col-6 text-light"><a> <i class="fas fa-heart me-2 ${
+              favoriteSong.some((s) => s.title === song.title)
+                ? 'text-success'
+                : ''
+            } "
             title-song-id="${song.title}"
              name-artist-id="${song.artist.name}" 
              artist-id="${song.artist.id}">
@@ -180,39 +183,44 @@ fetch(apiUrl + '/' + albumId)
             <div class="col col-3 d-flex justify-content-around align-items-center text-testo">${formatDuration(
               song.duration
             )}</div>
-          `;
-          
+          `
 
-      row.appendChild(songRow);
-     
-    });
+      row.appendChild(songRow)
+    })
+    startPlayer(album.tracks.data[0])
     const cuore = document.querySelectorAll(
-      ".fa-heart:not(.fa-heart.like-icon)"
-    );
+      '.fa-heart:not(.fa-heart.like-icon)'
+    )
     cuore.forEach((icon) => {
-     
-      icon.addEventListener("click", () => {
-        const title=icon.getAttribute("title-song-id")
-        
-       const name=icon.getAttribute("name-artist-id")
-        const artistId=icon.getAttribute("artist-id")
-        icon.classList.toggle("text-success");
-        let savedSong=localStorage.getItem("savedSong")
-        if(savedSong===null){
-          savedSong=[]
-        }else{savedSong=JSON.parse(savedSong)}
-        const song={
-          title:title,
-          artist:name,
-          artistId:artistId}
-          if(icon.classList.contains("text-success")){
-            if(!savedSong.some((songItem)=>songItem.title===song.title)){
-              savedSong.push(song)
-            }else{savedSong=savedSong.filter((songItem)=>songItem.title !==song.title)}
-            localStorage.setItem("savedSong",JSON.stringify(savedSong))
+      icon.addEventListener('click', () => {
+        const title = icon.getAttribute('title-song-id')
+
+        const name = icon.getAttribute('name-artist-id')
+        const artistId = icon.getAttribute('artist-id')
+        icon.classList.toggle('text-success')
+        let savedSong = localStorage.getItem('savedSong')
+        if (savedSong === null) {
+          savedSong = []
+        } else {
+          savedSong = JSON.parse(savedSong)
+        }
+        const song = {
+          title: title,
+          artist: name,
+          artistId: artistId,
+        }
+        if (icon.classList.contains('text-success')) {
+          if (!savedSong.some((songItem) => songItem.title === song.title)) {
+            savedSong.push(song)
+          } else {
+            savedSong = savedSong.filter(
+              (songItem) => songItem.title !== song.title
+            )
           }
-      });
-    });
+          localStorage.setItem('savedSong', JSON.stringify(savedSong))
+        }
+      })
+    })
   })
   .catch((error) => {
     console.log('orrore', error)
@@ -226,7 +234,32 @@ const formatDuration = function (durationInSeconds) {
 }
 
 const formatDuration1 = function (durationInSeconds) {
-  const minutes = Math.floor(durationInSeconds / 60);
-  const seconds = durationInSeconds % 60;
-  return `${minutes} min. ${seconds.toString().padStart(2, "0")} sec. `;
-};
+  const minutes = Math.floor(durationInSeconds / 60)
+  const seconds = durationInSeconds % 60
+  return `${minutes} min. ${seconds.toString().padStart(2, '0')} sec. `
+}
+
+//PLAYER
+const player = document.getElementById('player')
+const playButtonSuccess = document.querySelectorAll(
+  '#sfondoLg button.btn-success'
+)[0]
+
+const playBtn = document.getElementById('play-btn')
+
+const startPlayer = function (canzone) {
+  playButtonSuccess.addEventListener('click', () => {
+    console.log(playButtonSuccess)
+    player.classList.remove('d-none')
+    const playerCover = document.getElementById('player-cover')
+    playerCover.setAttribute(`src`, `${canzone.album.cover_small}`)
+    const playerTitle = document.getElementById('player-title')
+    playerTitle.innerText = `${canzone.title}`
+    const playerArtist = document.getElementById('player-artist')
+    playerArtist.innerText = `${canzone.artist.name}`
+    const audio = document.getElementById('audio')
+    audio.setAttribute(`src`, `${canzone.preview}`)
+    audio.setAttribute('autoplay', true)
+    playBtn.innerHTML = `<i class="fas fa-pause-circle fs-2"></i>`
+  })
+}
