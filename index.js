@@ -282,15 +282,14 @@ const carouselFunction = function () {
       <a id="album6" href="./album.html?albumId=${album.id}"
                         class="text-decoration-none rounded-pill btn btn-success px-3 fw-semibold"
                       >Play
-           
               </a>
-            </button>
+           
             <button
               class="rounded-pill border btn border-white mx-3 bg-transparent text-white px-3 fw-semibold"
             >
               Salva
             </button>
-            <i class="fas fa-ellipsis-h text-white-50"></i>
+            <i class="fas fa-ellipsis-h text-white-50  "></i>
           </span>
         </div></div>`
         carouselInner.appendChild(row)
