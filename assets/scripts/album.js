@@ -154,7 +154,7 @@ fetch(apiUrl + '/' + albumId)
   .then((album) => {
     const row = document.getElementById('rowParent')
     console.log('questo è album', album)
-    const favoriteSong = JSON.parse(localStorage.getItem('savedSong'))
+    const favoriteSong = JSON.parse(localStorage.getItem('savedSong')) || []
 
     album.tracks.data.forEach((song) => {
       console.log('questa è la song', song)
