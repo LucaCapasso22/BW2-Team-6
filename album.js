@@ -174,7 +174,7 @@ fetch(apiUrl + '/' + albumId)
              </i>
         </a>${song.title}<br> <a href="./artist.html?artistId=${
         song.artist.id
-      }" class="small text-decoration-none text-testo ms-4" > ${
+      }" class="small text-decoration-none text-testo ms-4 d-sm-none d-none d-md-block my-1" > ${
         song.artist.name
       }</a></div>
             <div class="col col-3 d-flex justify-content-around align-items-center text-testo">${
