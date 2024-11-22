@@ -30,7 +30,6 @@ const recuperoDati = function () {
       }
     })
     .then((album) => {
-      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
@@ -68,7 +67,6 @@ const recuperoDati2 = function () {
       }
     })
     .then((album) => {
-      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
@@ -106,7 +104,6 @@ const recuperoDati3 = function () {
       }
     })
     .then((album) => {
-      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
@@ -144,7 +141,6 @@ const recuperoDati4 = function () {
       }
     })
     .then((album) => {
-      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
@@ -182,7 +178,6 @@ const recuperoDati5 = function () {
       }
     })
     .then((album) => {
-      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
@@ -220,14 +215,13 @@ const recuperoDati6 = function () {
       }
     })
     .then((album) => {
-      
       const rowParent = document.getElementById('rowParent')
       const col = document.createElement('div')
       col.classList.add('col')
       col.innerHTML = `
-                      <a id="album6" href="./album.html?albumId=${album.id}"
-                        class="rounded d-flex align-items-center h-70 bg-testo text-decoration-none"
-                      >
+                        <a id="album6" href="./album.html?albumId=${album.id}"
+                          class="rounded d-flex align-items-center h-70 bg-testo text-decoration-none"
+                        >
                         <img
                           src="${album.cover}"
                           class="w-25 me-2 rounded-start"
@@ -265,7 +259,7 @@ const carouselFunction = function () {
       const carouselInner = document.getElementById('carouselInner')
       for (let i = 0; i < album.tracks.data.length; i++) {
         const row = document.createElement('div')
-        row.classList.add('row','carousel-item', 'w-100', )
+        row.classList.add('row', 'carousel-item', 'w-100')
         if (i === 0) {
           row.classList.add('active')
         }
@@ -285,12 +279,14 @@ const carouselFunction = function () {
               Ascolta il nuovo album di ${album.artist.name}
             </p>
           </div>
-          <span class="">
-            <button class="rounded-pill btn btn-success px-3">
-              Play
+      <a id="album6" href="./album.html?albumId=${album.id}"
+                        class="text-decoration-none rounded-pill btn btn-success px-3 fw-semibold"
+                      >Play
+           
+              </a>
             </button>
             <button
-              class="rounded-pill border btn border-white bg-transparent text-white px-3"
+              class="rounded-pill border btn border-white mx-3 bg-transparent text-white px-3 fw-semibold"
             >
               Salva
             </button>
