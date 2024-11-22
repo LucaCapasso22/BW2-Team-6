@@ -260,7 +260,7 @@ fetch(apiUrl + '/' + albumId)
           artist: name,
           artistId: artistId,
         }
-        if (icon.classList.contains('text-success')) {
+       
           if (!savedSong.some((songItem) => songItem.title === song.title)) {
             savedSong.push(song)
           } else {
@@ -269,7 +269,7 @@ fetch(apiUrl + '/' + albumId)
             )
           }
           localStorage.setItem('savedSong', JSON.stringify(savedSong))
-        }
+        
       })
     })
   })
