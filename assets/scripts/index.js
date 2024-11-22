@@ -35,7 +35,7 @@ const recuperoDati = function () {
       col.classList.add('col')
       col.innerHTML = `
                       <a id="album1" href="./album.html?albumId=${album.id}"
-                        class="rounded d-flex align-items-center h-70 bg-testo text-decoration-none"
+                        class="rounded d-flex align-items-center bgCards h-70 text-decoration-none"
                       >
                         <img
                           src="${album.cover}"
@@ -72,7 +72,7 @@ const recuperoDati2 = function () {
       col.classList.add('col')
       col.innerHTML = `
                       <a id="album2" href="./album.html?albumId=${album.id}"
-                        class="rounded d-flex align-items-center h-70 bg-testo text-decoration-none"
+                        class="rounded d-flex align-items-center bgCards h-70 text-decoration-none"
                       >
                         <img
                           src="${album.cover}"
@@ -109,7 +109,7 @@ const recuperoDati3 = function () {
       col.classList.add('col')
       col.innerHTML = `
                       <a id="album3" href="./album.html?albumId=${album.id}"
-                        class="rounded d-flex align-items-center h-70 bg-testo text-decoration-none"
+                        class="rounded d-flex align-items-center bgCards h-70 text-decoration-none"
                       >
                         <img
                           src="${album.cover}"
@@ -146,7 +146,7 @@ const recuperoDati4 = function () {
       col.classList.add('col')
       col.innerHTML = `
                       <a id="album4" href="./album.html?albumId=${album.id}"
-                        class="rounded d-flex align-items-center h-70 bg-testo text-decoration-none"
+                        class="rounded d-flex align-items-center bgCards h-70 text-decoration-none"
                       >
                         <img
                           src="${album.cover}"
@@ -183,7 +183,7 @@ const recuperoDati5 = function () {
       col.classList.add('col')
       col.innerHTML = `
                       <a id="album5" href="./album.html?albumId=${album.id}"
-                        class="rounded d-flex align-items-center h-70 bg-testo text-decoration-none"
+                        class="rounded d-flex align-items-center bgCards h-70 text-decoration-none"
                       >
                         <img
                           src="${album.cover}"
@@ -220,7 +220,7 @@ const recuperoDati6 = function () {
       col.classList.add('col')
       col.innerHTML = `
                         <a id="album6" href="./album.html?albumId=${album.id}"
-                          class="rounded d-flex align-items-center h-70 bg-testo text-decoration-none"
+                          class="rounded d-flex align-items-center bgCards h-70 text-decoration-none"
                         >
                         <img
                           src="${album.cover}"
