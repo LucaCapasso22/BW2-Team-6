@@ -89,7 +89,7 @@ fetch(artistURL + '/top?limit=50')
     const heroSection = document.getElementById('hero-section-artist')
     const playSuccess = document.getElementById('play-success')
     playSuccess.addEventListener('click', () => {
-      heroSection.style.height = '30vh'
+      heroSection.style.height = '35vh'
 
       const player = document.getElementById('player')
       player.classList.remove('d-none')

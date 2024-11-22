@@ -270,7 +270,7 @@ p {
 
 @media screen and (max-width: 768px) {
   .position {
-    transform: translateY(-120%);
+    transform: translateY(-4.5rem);
   }
 }
 #search-list-container {
