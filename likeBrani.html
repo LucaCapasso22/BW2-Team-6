@@ -18,32 +18,33 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./assets/css/assets.css" />
+    <link rel="stylesheet" href="assets/scss/custom-bootstrap.css" />
   </head>
-  <body 
+  <body
     style="
       background-image: linear-gradient(
         180deg,
         hsl(0deg 0% 29%) 0%,
-        hsl(0deg 0% 28%) 3%,
-        hsl(0deg 0% 27%) 6%,
-        hsl(0deg 0% 26%) 8%,
-        hsl(0deg 0% 24%) 10%,
-        hsl(0deg 0% 23%) 12%,
-        hsl(0deg 0% 21%) 14%,
-        hsl(0deg 0% 19%) 15%,
-        hsl(0deg 0% 17%) 17%,
-        hsl(0deg 0% 16%) 18%,
-        hsl(0deg 0% 15%) 19%,
-        hsl(0deg 0% 14%) 21%,
-        hsl(0deg 0% 13%) 24%,
-        hsl(0deg 0% 11%) 27%,
-        hsl(0deg 0% 10%) 32%,
-        hsl(0deg 0% 8%) 41%,
-        hsl(0deg 0% 6%) 57%,
-        hsl(0deg 0% 0%) 100%
+        hsl(0deg 0% 28%) 0%,
+        hsl(0deg 0% 27%) 0%,
+        hsl(0deg 0% 26%) 0%,
+        hsl(0deg 0% 24%) 1%,
+        hsl(0deg 0% 23%) 1%,
+        hsl(0deg 0% 21%) 2%,
+        hsl(0deg 0% 19%) 3%,
+        hsl(0deg 0% 17%) 5%,
+        hsl(0deg 0% 16%) 6%,
+        hsl(0deg 0% 15%) 8%,
+        hsl(0deg 0% 14%) 11%,
+        hsl(0deg 0% 13%) 15%,
+        hsl(0deg 0% 11%) 19%,
+        hsl(0deg 0% 10%) 25%,
+        hsl(0deg 0% 8%) 33%,
+        hsl(0deg 0% 6%) 45%,
+        hsl(0deg 0% 0%) 82%
       );
-     background-repeat: no-repeat;
-     height: 100vh;
+      background-repeat: no-repeat;
+      height: 100vh;
     "
   >
     <header>
@@ -53,25 +54,215 @@
             <h2 class="text-white">Brani che ti piacciono</h2>
           </div>
           <div class="col">
-            <button class="rounded-pill btn btn-success px-4">Play</button>
+            <button class="rounded-pill btn btn-success px-4" id="buttonplay">Play</button>
           </div>
         </div>
       </div>
     </header>
-    <main>
-      <div class="container">
-        <div class="row mt-5">
-          <div class="col col-9 text-light">#TITOLO</div>
-          <div class="col col-3 text-light">Artista</div>
+    <main style="background-color: transparent" <div class="container">
+      <div class="row mt-5">
+        <div class="col col-9 text-light">#TITOLO</div>
+        <div class="col col-3 text-light">Artista</div>
 
-          <hr />
-        </div>
-        <div id="nessunBrano" ></div>
-       
-        
-        <!--QUI INSERISCO LE CARD DELLE CANZONI PREFERITE-->
+        <hr />
       </div>
+      <div id="nessunBrano"></div>
+
+      <!--QUI INSERISCO LE CARD DELLE CANZONI PREFERITE-->
     </main>
+    <article id="player" class="position-fixed bottom-0 w-100 d-none">
+        <div
+          class="container-fluid bg-warning p-4 text-light border border-2 border-testo border-bottom-0 border-end-0 border-start-0"
+        >
+          <div class="row justify-content-between">
+            <!-- song info -->
+            <div
+              class="col col-md-3 d-flex align-items-center justify-content-start px-0"
+            >
+              <div>
+                <img
+                  src="https://placecats.com/50/50"
+                  alt="placeholder"
+                  id="player-cover"
+                />
+              </div>
+              <div class="mx-4">
+                <p class="mb-0 player-song-title fw-medium" id="player-title">
+                  Fat Funny Friend
+                </p>
+                <p
+                  class="mb-0 player-song-artist fw-medium text-testo"
+                  id="player-artist"
+                >
+                  Maddie Zahm
+                </p>
+              </div>
+              <div class="btn btn-outline-dark border-0 p-0">
+                <i class="far fa-heart text-testo"></i>
+              </div>
+            </div>
+            <!-- progress bar -->
+            <div
+              class="col col-md-6 d-flex align-items-center justify-content-center flex-column"
+            >
+              <!-- player buttons -->
+              <div
+                class="d-flex w-50 justify-content-around align-items-center"
+              >
+                <button class="text-light btn btn-outline-dark border-0">
+                  <i class="fas fa-random"></i>
+                </button>
+                <button class="text-light btn btn-outline-dark border-0">
+                  <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="text-light btn btn-outline-dark border-0">
+                  <i class="fas fa-play-circle fs-2"></i>
+                </button>
+                <button class="text-light btn btn-outline-dark border-0">
+                  <i class="fas fa-step-forward"></i>
+                </button>
+                <button class="text-light btn btn-outline-dark border-0">
+                  <i class="fas fa-retweet"></i>
+                </button>
+              </div>
+              <!-- player progress -->
+              <div
+                class="d-flex justify-content-between w-100 align-items-center"
+              >
+                <div>00.00</div>
+                <div
+                  id="progressBar"
+                  class="progress-bar w-100 h-25 mx-1 bg-testo rounded-1"
+                  role="progressbar"
+                  style="width: 0%"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+                <div>00.00</div>
+              </div>
+            </div>
+            <!-- audio settings -->
+            <div
+              class="col col-md-3 d-flex align-items-center justify-content-end"
+            >
+              <!-- mic icon -->
+              <button class="mx-1 p-0 btn btn-outline-dark border-0">
+                <svg
+                  fill="#8B8B8B"
+                  width="2rem"
+                  height="2rem"
+                  viewBox="0 0 64 64"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title />
+                  <g id="Mic">
+                    <path
+                      d="M20,50.45a1,1,0,0,1-.71-.3L13.64,44.5a1,1,0,0,1,0-1.42L34.86,21.87a1,1,0,0,1,1.41,0l5.66,5.66a1,1,0,0,1,.29.7,1,1,0,0,1-.29.71L20.72,50.15A1,1,0,0,1,20,50.45Zm-4.24-6.66L20,48l19.8-19.8L35.56,24Z"
+                    />
+                    <path
+                      d="M45.46,29.33a11,11,0,1,1,7.78-3.22h0A10.94,10.94,0,0,1,45.46,29.33Zm0-20A9,9,0,1,0,51.83,24.7h0A9,9,0,0,0,45.46,9.34Z"
+                    />
+                    <path
+                      d="M35.56,34.89h0a1,1,0,0,1-.7-.29L29.2,28.94a1,1,0,0,1,0-1.41l5.66-5.66a1,1,0,0,1,1.41,0l5.66,5.66a1,1,0,0,1,.29.7,1,1,0,0,1-.29.71L36.27,34.6A1,1,0,0,1,35.56,34.89Zm-4.24-6.66,4.24,4.25,4.25-4.25L35.56,24Z"
+                    />
+                    <path
+                      d="M16.12,50.8a1,1,0,0,1-.71-.29l-2.12-2.12a1,1,0,0,1,0-1.42l2.12-2.12a1,1,0,0,1,1.42,0L19,47a1,1,0,0,1,0,1.42l-2.12,2.12A1,1,0,0,1,16.12,50.8Zm-.71-3.12.71.71.71-.71L16.12,47Z"
+                    />
+                    <path
+                      d="M17.45,56.86a2.65,2.65,0,0,1-1.81-.7c-2-1.79-1.66-6.57-1.58-7.51a1,1,0,0,1,1.09-.91,1,1,0,0,1,.9,1.09c-.17,1.93,0,5,.93,5.85a.73.73,0,0,0,.71.15c3.3-.66,7.38-3.36,7.42-3.39,1-.78,4.73-3.39,6.68-2.78A1.82,1.82,0,0,1,33,49.84a1,1,0,0,1-1.87.71c-.68-.06-2.93,1.09-4.85,2.53-.22.15-4.49,3-8.18,3.71A3.47,3.47,0,0,1,17.45,56.86Z"
+                    />
+                  </g>
+                </svg>
+              </button>
+
+              <!-- list icon -->
+              <button class="mx-1 p-0 btn btn-outline-dark border-0">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="#8B8B8B"
+                  class="bi bi-list"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+                  />
+                </svg>
+              </button>
+
+              <!-- music player icon -->
+              <button class="mx-1 p-0 btn btn-outline-dark border-0">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="#8B8B8B"
+                  class="bi bi-music-player"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zm1 0v3h6V3zm3 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                  />
+                  <path
+                    d="M11 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 2a2 2 0 1 0 0-4 2 2 0 0 0 0 4"
+                  />
+                  <path
+                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"
+                  />
+                </svg>
+              </button>
+
+              <!-- volume icon -->
+              <button class="mx-1 p-0 btn btn-outline-dark border-0">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="#8B8B8B"
+                  class="bi bi-volume-up"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"
+                  />
+                  <path
+                    d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z"
+                  />
+                  <path
+                    d="M10.025 8a4.5 4.5 0 0 1-1.318 3.182L8 10.475A3.5 3.5 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.5 4.5 0 0 1 10.025 8M7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12zM4.312 6.39 6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11"
+                  />
+                </svg>
+              </button>
+
+              <!-- volume bar -->
+
+              <div id="volumeContainer">
+                <div id="volumeBar"></div>
+              </div>
+
+              <!-- angle-expande icon -->
+              <button class="mx-1 p-0 btn btn-outline-dark border-0">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="#8B8B8B"
+                  class="bi bi-arrows-angle-expand"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
     <script src="./assets/scripts/likeBrani.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

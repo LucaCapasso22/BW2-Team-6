@@ -154,7 +154,7 @@ fetch(apiUrl + '/' + albumId)
   .then((album) => {
     const row = document.getElementById('rowParent')
     console.log('questo è album', album)
-    const favoriteSong = JSON.parse(localStorage.getItem('savedSong'))
+    const favoriteSong = JSON.parse(localStorage.getItem('savedSong')) || []
 
     album.tracks.data.forEach((song) => {
       console.log('questa è la song', song)
@@ -260,7 +260,7 @@ fetch(apiUrl + '/' + albumId)
           artist: name,
           artistId: artistId,
         }
-        if (icon.classList.contains('text-success')) {
+       
           if (!savedSong.some((songItem) => songItem.title === song.title)) {
             savedSong.push(song)
           } else {
@@ -269,7 +269,7 @@ fetch(apiUrl + '/' + albumId)
             )
           }
           localStorage.setItem('savedSong', JSON.stringify(savedSong))
-        }
+        
       })
     })
   })
