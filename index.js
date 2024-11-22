@@ -286,15 +286,15 @@ const carouselFunction = function () {
             </p>
           </div>
           <span class="">
-            <button class="rounded-pill btn btn-success px-3">
+            <button class="rounded-pill btn btn-success px-3 fw-medium">
               Play
             </button>
             <button
-              class="rounded-pill border btn border-white bg-transparent text-white px-3"
+              class="rounded-pill border-2 btn border-secondary bg-transparent text-white px-3 me-2"
             >
               Salva
             </button>
-            <i class="fas fa-ellipsis-h text-white-50"></i>
+            <i class="fas fa-ellipsis-h text-white-50  "></i>
           </span>
         </div></div>`
         carouselInner.appendChild(row)
