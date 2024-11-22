@@ -1,0 +1,14 @@
+#volumeContainer {
+  width: 30%;
+  height: 10%;
+  background-color: #8b8b8b;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#volumeBar {
+  width: 100%;
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 5px;
+}

@@ -187,10 +187,61 @@ fetch(apiUrl + '/' + albumId)
 
       row.appendChild(songRow)
     })
+    //fa partire la ripsoduzione del primo brano
     startPlayer(album.tracks.data[0])
+
+    const bwButton = document.getElementById('backward-btn')
+    const fwButton = document.getElementById('forward-btn')
+
+    fwButton.addEventListener('click', function () {
+      const audio = document.getElementById('audio')
+      if (!audio.paused) {
+        const preview = audio.getAttribute('src')
+        const ind = album.tracks.data.findIndex(
+          (obj) => obj.preview === preview
+        )
+        audio.setAttribute('src', `${album.tracks.data[ind + 1].preview}`)
+        audio.setAttribute('autoplay', true)
+
+        const playerCover = document.getElementById('player-cover')
+        playerCover.setAttribute(
+          `src`,
+          `${album.tracks.data[ind + 1].album.cover_small}`
+        )
+        const playerTitle = document.getElementById('player-title')
+        playerTitle.innerText = `${album.tracks.data[ind + 1].title}`
+        const playerArtist = document.getElementById('player-artist')
+        playerArtist.innerText = `${album.tracks.data[ind + 1].artist.name}`
+      }
+    })
+
+    bwButton.addEventListener('click', () => {
+      const audio = document.getElementById('audio')
+      if (!audio.paused) {
+        const preview = audio.getAttribute('src')
+        const ind = album.tracks.data.findIndex(
+          (obj) => obj.preview === preview
+        )
+        if (ind > 0) {
+          audio.setAttribute('src', `${album.tracks.data[ind - 1].preview}`)
+          audio.setAttribute('autoplay', true)
+
+          const playerCover = document.getElementById('player-cover')
+          playerCover.setAttribute(
+            `src`,
+            `${album.tracks.data[ind - 1].album.cover_small}`
+          )
+          const playerTitle = document.getElementById('player-title')
+          playerTitle.innerText = `${album.tracks.data[ind - 1].title}`
+          const playerArtist = document.getElementById('player-artist')
+          playerArtist.innerText = `${album.tracks.data[ind - 1].artist.name}`
+        }
+      }
+    })
     const cuore = document.querySelectorAll(
       '.fa-heart:not(.fa-heart.like-icon)'
     )
+
     cuore.forEach((icon) => {
       icon.addEventListener('click', () => {
         const title = icon.getAttribute('title-song-id')
@@ -245,7 +296,11 @@ const playButtonSuccess = document.querySelectorAll(
   '#sfondoLg button.btn-success'
 )[0]
 
+const bwButton = document.getElementById('backward-btn')
+const fwButton = document.getElementById('forward-btn')
+
 const playBtn = document.getElementById('play-btn')
+const audio = document.getElementById('audio')
 
 const startPlayer = function (canzone) {
   playButtonSuccess.addEventListener('click', () => {
@@ -257,9 +312,73 @@ const startPlayer = function (canzone) {
     playerTitle.innerText = `${canzone.title}`
     const playerArtist = document.getElementById('player-artist')
     playerArtist.innerText = `${canzone.artist.name}`
-    const audio = document.getElementById('audio')
+
     audio.setAttribute(`src`, `${canzone.preview}`)
     audio.setAttribute('autoplay', true)
     playBtn.innerHTML = `<i class="fas fa-pause-circle fs-2"></i>`
+
+    //mute/unmute
+    const volumeIcon = document.getElementById('volume-btn')
+    volumeIcon.addEventListener('click', () => {
+      if (audio.muted) {
+        audio.muted = false
+        volumeIcon.innerHTML = `<svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    fill="#8B8B8B"
+                    class="bi bi-volume-up"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"
+                    />
+                    <path
+                      d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z"
+                    />
+                    <path
+                      d="M10.025 8a4.5 4.5 0 0 1-1.318 3.182L8 10.475A3.5 3.5 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.5 4.5 0 0 1 10.025 8M7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12zM4.312 6.39 6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11"
+                    />
+                  </svg>`
+      } else {
+        audio.muted = true
+        volumeIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#8B8B8B" class="bi bi-volume-mute" viewBox="0 0 16 16">
+    <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06M6 5.04 4.312 6.39A.5.5 0 0 1 4 6.5H2v3h2a.5.5 0 0 1 .312.11L6 10.96zm7.854.606a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0"/>
+  </svg>`
+      }
+    })
   })
 }
+
+//play/pause
+playBtn.addEventListener('click', () => {
+  if (!audio.paused) {
+    // audio.setAttribute('autoplay', false)
+    audio.pause()
+    playBtn.innerHTML = `<i class="fas fa-play-circle fs-2"></i>`
+  } else {
+    audio.play()
+    playBtn.innerHTML = `<i class="fas fa-pause-circle fs-2"></i>`
+  }
+})
+
+//volume control
+const volumeContainer = document.getElementById('volumeContainer')
+const volumeBar = document.getElementById('volumeBar')
+
+const updateVolume = function (volume) {
+  if (volume >= 0 && volume <= 100) {
+    volumeBar.style.width = `${volume}%`
+    console.log(`Volume aggiornato a: ${volume}%`)
+  }
+}
+
+volumeContainer.addEventListener('click', (event) => {
+  const rect = volumeContainer.getBoundingClientRect()
+  const clickX = event.clientX - rect.left
+  const width = rect.width
+  const volume = Math.round((clickX / width) * 100)
+
+  updateVolume(volume)
+  audio.volume = volume / 100
+})
