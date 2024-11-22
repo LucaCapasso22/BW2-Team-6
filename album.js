@@ -154,6 +154,9 @@ fetch(apiUrl + '/' + albumId)
   .then((album) => {
     const row = document.getElementById('rowParent')
     console.log('questo è album', album)
+    const favoriteSong=JSON.parse(localStorage.getItem("savedSong"))
+    
+
     album.tracks.data.forEach((song) => {
       console.log("questa è la song", song);
       const songRow = document.createElement("div");
@@ -161,7 +164,7 @@ fetch(apiUrl + '/' + albumId)
       songRow.classList.add("row");
       songRow.innerHTML = `
             
-            <div class="col col-6 text-light"><a> <i class="fas fa-heart me-2
+            <div class="col col-6 text-light"><a> <i class="fas fa-heart me-2 ${favoriteSong.some(s=>s.title===song.title)?"text-success":""} "
             title-song-id="${song.title}"
              name-artist-id="${song.artist.name}" 
              artist-id="${song.artist.id}">
